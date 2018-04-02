@@ -6,7 +6,15 @@ gulp.task('style', function () {
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError)) 
     .pipe(gulp.dest('dist/css'))
 });
+
+
+gulp.task('html', function() {
+  return gulp.src('src/**/*.html')
+  .pipe(gulp.dest('dist'));
+})
+
 gulp.task('watch', function () {
-  gulp.watch(['src/sass/**/*.sass','src/sass/**/*.scss'], ['style']); 
+  gulp.watch(['src/sass/**/*.sass','src/sass/**/*.scss', 'src/**/*.html'], ['style', 'html']); 
 });
+
 gulp.task('default', ['watch']);
