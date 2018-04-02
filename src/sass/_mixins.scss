@@ -1,0 +1,14 @@
+@mixin set-color ($color) {
+  background: linear-gradient(to top, darken($color, 4%), lighten($color, 10%));
+  border: 1px solid darken($color, 6%);
+
+  &:hover {
+    background: $color;
+    border-color: $color;
+  }
+  
+  &:active {
+    box-shadow: inset -3px 0px 10px 0px darken($color, 15%);
+  }
+}
+

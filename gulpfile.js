@@ -11,9 +11,18 @@ gulp.task('style', function () {
 gulp.task('html', function() {
   return gulp.src('src/**/*.html')
   .pipe(gulp.dest('dist'));
-})
+});
 
-gulp.task('watch', function () {
+gulp.task('img', function() {
+  gulp.src('src/img/*.*')
+  .pipe(gulp.dest('dist/img'));
+});
+
+gulp.task('build', ['html', 'style', 'img'], function() {
+
+});
+
+gulp.task('watch', ['build'], function () {
   gulp.watch(['src/sass/**/*.sass','src/sass/**/*.scss', 'src/**/*.html'], ['style', 'html']); 
 });
 

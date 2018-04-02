@@ -1,3 +1,99 @@
-body {
-  background-color: red;
+@import 'variables', 'mixins';
+* {
+  box-sizing: border-box;
 }
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: $font-style;
+}
+
+.main-wrapper {
+  max-width: 1900px;
+  padding: 2em 2em;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 15em;
+
+  &__flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  
+    &--space-btw {
+      justify-content: space-between;
+    }
+  }
+}
+
+.heading {
+  margin-bottom: 2.5em;
+  font-size: 4em;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-weight: lighter;
+
+  &__bold-text {
+    font-weight: bold;
+  }
+}
+
+.buttons {
+  font-size: 1rem;
+}
+
+.button {
+  padding: 0.6733em 2.6377em;
+  color: $btn-text-col;
+  font-size: 3.6em;
+  line-height: 1em;
+  border: none;
+  background-color: $default-bg-col;
+  border-radius: 0.1666em;
+  cursor: pointer;
+
+  &--green {
+    @include set-color($green-bg-col);
+  }
+
+  &--yellow {
+    @include set-color($yellow-bg-col);
+  }
+
+  &--red {
+    @include set-color($red-bg-col);
+  }
+
+  &--blue {
+    @include set-color($blue-bg-col);
+  }
+
+  &--gray {
+    @include set-color($gray-bg-col);
+  }
+}
+
+.input-label {
+  display: block;
+  width: 3.7em;
+  height: 3.7em;
+  background-color: #e8ebec;
+  border: 2px solid #c2c2c2;
+  border-radius: 0.6em;
+  margin-right: 4em;
+
+ .checkbox:checked ~ &--green{
+    @include set-color($green-bg-col);
+    background-image: url('../img/tick.svg');
+  }
+}
+
+.checkbox {
+  display: none;
+}
+
