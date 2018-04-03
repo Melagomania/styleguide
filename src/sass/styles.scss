@@ -1,4 +1,4 @@
-@import 'variables', 'mixins';
+@import 'variables', 'mixins', 'fonts';
 * {
   box-sizing: border-box;
 }
@@ -9,6 +9,7 @@ html {
 
 body {
   font-family: $font-style;
+  background-color: $body-bg-col;
 }
 
 .main-wrapper {
@@ -24,6 +25,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin-bottom: 2em;
   
     &--space-btw {
       justify-content: space-between;
@@ -59,22 +61,27 @@ body {
 
   &--green {
     @include set-color($green-bg-col);
+    @include set-button-states($green-bg-col);
   }
 
   &--yellow {
     @include set-color($yellow-bg-col);
+    @include set-button-states($yellow-bg-col);
   }
 
   &--red {
     @include set-color($red-bg-col);
+    @include set-button-states($red-bg-col);
   }
 
   &--blue {
     @include set-color($blue-bg-col);
+    @include set-button-states($blue-bg-col);
   }
 
   &--gray {
     @include set-color($gray-bg-col);
+    @include set-button-states($gray-bg-col);
   }
 }
 
@@ -87,9 +94,53 @@ body {
   border-radius: 0.6em;
   margin-right: 4em;
 
- .checkbox:checked ~ &--green{
+  .checkbox:checked + &--green{
+    position: relative;
     @include set-color($green-bg-col);
-    background-image: url('../img/tick.svg');
+
+    &::after {
+      @include set-icon-font("\ea10", #fff, 2em);
+    }
+  }
+
+  .checkbox:checked + &--yellow{
+    position: relative;
+    @include set-color($yellow-bg-col);
+
+    &::after {
+      @include set-icon-font("\ea10", #fff, 2em);
+    }
+  }
+
+  .checkbox:checked + &--red{
+    position: relative;
+    @include set-color($red-bg-col);
+
+    &::after {
+      @include set-icon-font("\ea10", #fff, 2em);
+    }
+  } 
+
+  .checkbox:checked + &--blue{
+    position: relative;
+    @include set-color($blue-bg-col);
+
+    &::after {
+      @include set-icon-font("\ea10", #fff, 2em);
+    }
+  }
+
+  .checkbox:checked + &--gray{
+    position: relative;
+    @include set-color($gray-bg-col);
+
+    &::after {
+      @include set-icon-font("\ea10", #fff, 2em);
+    }
+  }
+
+  .checkbox:disabled + & {
+    opacity: 0.5;
   }
 }
 
@@ -97,3 +148,151 @@ body {
   display: none;
 }
 
+.pagination {
+  display: flex;
+  justify-content: flex-start;
+
+  &__link {
+    display: block;
+    margin-right: 1em;
+    background-color: red;
+    width: 2.4em;
+    height: 2.4em;
+    border-radius: 0.2em;
+    text-decoration: none;
+    font-size: 1.7em;
+    text-align: center;
+    line-height: 2.2em;
+    text-decoration: none;
+    color: $pagination-font-color;
+    font-weight: bolder;
+    @include set-color ($pagination-main-col);
+    @include set-button-states ($pagination-main-col);
+
+    &--arrow {
+      position: relative;
+      &:first-child {
+        &:after {
+          @include set-icon-font('\ea40', $pagination-font-color, 0.8em);
+        }
+      }
+      &:last-child {
+        &:after {
+          @include set-icon-font('\ea3c', $pagination-font-color, 0.8em);
+        }
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &--green {
+    .pagination__link {
+      &--active {
+        @include set-color ($green-bg-col);
+        @include set-button-states ($green-bg-col);
+        color: #fff;
+      }
+    }
+  }
+
+  &--yellow {
+    .pagination__link {
+      &--active {
+        @include set-color ($yellow-bg-col);
+        @include set-button-states ($yellow-bg-col);
+        color: #fff;
+      }
+    }
+  }
+  &--red {
+    .pagination__link {
+      &--active {
+        @include set-color ($red-bg-col);
+        @include set-button-states ($red-bg-col);
+        color: #fff;
+      }
+    }
+  }
+  &--blue {
+    .pagination__link {
+      &--active {
+        @include set-color ($blue-bg-col);
+        @include set-button-states ($blue-bg-col);
+        color: #fff;
+      }
+    }
+  }
+  &--gray {
+    .pagination__link {
+      &--active {
+        @include set-color ($gray-bg-col);
+        @include set-button-states ($gray-bg-col);
+        color: #fff;
+      }
+    }
+  }
+}
+
+
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 20em 6em 0;
+}
+
+.tabs__tab {
+  font-size: 2.8em;
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+}
+
+.tabs--style-1 {
+  color: $tabs-style1-font-col;
+  border-bottom: 2px solid $tabs-style1-border-col;
+  .tabs__tab {
+    margin-bottom: -2px;
+    border-bottom: 4px solid transparent;    
+  }
+  .tabs__tab--active {
+    color: $tabs-style1-font-col--active;
+  }
+  &.tabs--green {
+    .tabs__tab--active {
+      border-bottom: 4px solid $tabs-green-col;
+    }
+  }
+  &.tabs--red {
+    .tabs__tab--active {
+      border-bottom: 4px solid $tabs-red-col;
+    }
+  }
+}
+
+.tabs--style-2 {
+  overflow: hidden;
+  color: $tabs-style2-font-col;
+  border: 1px solid $tabs-style1-border-col;
+  border-radius: 0.8em;
+  .tabs__tab {
+    border-right: 1px solid $tabs-style1-border-col;
+    &:last-child {
+      border-right: none;
+    } 
+  }
+  .tabs__tab--active {
+    color: $tabs-style2-bg-col;
+  }
+  &.tabs--green {
+    .tabs__tab--active {
+      background-color: $tabs-green-col;
+    }
+  }
+  &.tabs--red {
+    .tabs__tab--active {
+      background-color: $tabs-red-col;
+    }
+  }
+}

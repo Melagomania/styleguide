@@ -1,14 +1,28 @@
 @mixin set-color ($color) {
-  background: linear-gradient(to top, darken($color, 4%), lighten($color, 10%));
+  background: linear-gradient(to top, saturate(darken($color, 4%), 10%), saturate(lighten($color, 10%), 10%));
   border: 1px solid darken($color, 6%);
+}
 
+@mixin set-button-states ($color) {
   &:hover {
     background: $color;
     border-color: $color;
   }
-  
   &:active {
-    box-shadow: inset -3px 0px 10px 0px darken($color, 15%);
+    box-shadow: inset -3px 0 10px 0 darken($color, 15%);
   }
 }
+
+@mixin set-icon-font($icon-code, $icon-color, $font-size) {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  font-family: 'Icons';
+  content: $icon-code;
+  font-size: $font-size;
+  color: $icon-color;
+}
+
 

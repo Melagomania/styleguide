@@ -18,7 +18,11 @@ gulp.task('img', function() {
   .pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('build', ['html', 'style', 'img'], function() {
+gulp.task('fonts', function() {
+  gulp.src('src/fonts/**/*.*').pipe(gulp.dest('dist/fonts'));
+});
+
+gulp.task('build', ['html', 'style', 'img', 'fonts'], function() {
 
 });
 
